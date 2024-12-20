@@ -31,7 +31,13 @@ body {
 }
 
 .flex-between {
+  display: flex;
   justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
 }
 
 .grid {
@@ -74,6 +80,18 @@ body {
   display: inline;
 }
 
+.btn {
+  padding: 0 20px;
+  height: 46px;
+  border-radius: 5px;
+  background-color: #0a86ff;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid #0a86ff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
 main {
   height: 100svh;
 }
@@ -81,6 +99,7 @@ main {
 .board {
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
+  border: 2px solid red;
 }
 
 .box {
@@ -90,42 +109,30 @@ main {
   cursor: pointer;
 }
 
-.box-1l {
+.box-top-center {
+  border-left: 2px solid red;
+  /*border-bottom: 2px solid red;*/
   border-right: 2px solid red;
-  border-bottom: 2px solid red;
 }
 
-.box-1c {
-  border-bottom: 2px solid red;
-}
-
-.box-1r {
+.box-middle-center {
   border-left: 2px solid red;
   border-bottom: 2px solid red;
-}
-
-.box-2l {
   border-right: 2px solid red;
+  border-top: 2px solid red;
+}
+
+.box-middle-left {
+  border-top: 2px solid red;
   border-bottom: 2px solid red;
 }
 
-.box-2c {
+.box-middle-right {
+  border-top: 2px solid red;
   border-bottom: 2px solid red;
 }
 
-.box-2r {
-  border-left: 2px solid red;
-  border-bottom: 2px solid red;
-}
-
-.box-3l {
+.box-down-center {
   border-right: 2px solid red;
-}
-
-.box-3c {
-
-}
-
-.box-3r {
   border-left: 2px solid red;
 }

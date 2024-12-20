@@ -8,8 +8,5 @@
   "keywords": [],
   "author": "Lateef Adeyekun",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "lite-server": "^2.6.1"
-  }
+  "description": "TicTacToe game"
 }
