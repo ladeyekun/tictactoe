@@ -21,9 +21,13 @@ a {
 }
 
 body {
-  font-family: "Nunito Sans", "Noto Sans", Arial, sans-serif;
+  font-family: "Lilita One", "Yatra One", "Pacifico", sans-serif;
   background-color: var(--app-background-color);
   color: var(--app-font-color);
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings:
+    "ROND" 0;
 }
 
 .flex {
@@ -84,55 +88,75 @@ body {
   padding: 0 20px;
   height: 46px;
   border-radius: 5px;
-  background-color: #0a86ff;
-  color: #fff;
+  background-color: #6f41cf;
+  color: #f4f5f7;
   cursor: pointer;
-  border: 1px solid #0a86ff;
-  font-size: 18px;
-  font-weight: 600;
+  border: 1px solid #6f41cf;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 main {
   height: 100svh;
 }
 
+.win {
+  color: green;
+}
+
 .board {
   grid-template-columns: repeat(3, 1fr);
   gap: 0px;
-  border: 2px solid red;
+  border: 2px solid rgb(0 0 0 / 15%);
 }
 
 .box {
+  font-family: "Pacifico", sans-serif;
   width: 100px;
   height: 100px;
   background-color: #313131;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  font-size: 40px;
+  font-weight: 700;
 }
 
 .box-top-center {
-  border-left: 2px solid red;
+  border-left: 2px solid rgb(0 0 0 / 15%);
   /*border-bottom: 2px solid red;*/
-  border-right: 2px solid red;
+  border-right: 2px solid rgb(0 0 0 / 15%);
 }
 
 .box-middle-center {
-  border-left: 2px solid red;
-  border-bottom: 2px solid red;
-  border-right: 2px solid red;
-  border-top: 2px solid red;
+  border-left: 2px solid rgb(0 0 0 / 15%);
+  border-bottom: 2px solid rgb(0 0 0 / 15%);
+  border-right: 2px solid rgb(0 0 0 / 15%);
+  border-top: 2px solid rgb(0 0 0 / 15%);
 }
 
 .box-middle-left {
-  border-top: 2px solid red;
-  border-bottom: 2px solid red;
+  border-top: 2px solid rgb(0 0 0 / 15%);
+  border-bottom: 2px solid rgb(0 0 0 / 15%);
 }
 
 .box-middle-right {
-  border-top: 2px solid red;
-  border-bottom: 2px solid red;
+  border-top: 2px solid rgb(0 0 0 / 15%);
+  border-bottom: 2px solid rgb(0 0 0 / 15%);
 }
 
 .box-down-center {
-  border-right: 2px solid red;
-  border-left: 2px solid red;
+  border-right: 2px solid rgb(0 0 0 / 15%);
+  border-left: 2px solid rgb(0 0 0 / 15%);
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 500;
+  
+}
+
+.info {
+  font-size: 20px;
 }
