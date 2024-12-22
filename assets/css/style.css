@@ -98,6 +98,7 @@ body {
 
 main {
   height: 100svh;
+  background: #fff url(../img/bg.jpg) center center / cover no-repeat;
 }
 
 .win {

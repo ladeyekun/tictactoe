@@ -22,7 +22,7 @@ const winCombinations = [
 
 function init() {
   board.innerHTML = '';
-  for (let [index, arr] of arrays.entries()){
+  for (let index of arrays.keys()){
     const boxArr = create('div');
     boxArr.classList.add('box');
     boxArr.setAttribute('data', index);
@@ -34,27 +34,21 @@ function init() {
 
     board.appendChild(boxArr);
   }
-  boxesListerners();
+  initiateBoardListeners();
   displayInfo();
 }
 
-const equalPlayer = (currentValue) => currentValue === getCurrentPlayer();
-
 function checkWin() {
   for (const combination of winCombinations){
-    //console.log(combination);
-    //isWinning = combination.every(equalPlayer);
     let XO = getCurrentPlayer();
     let [a, b, c] = combination;
     let isWinning = arrays[a] === XO && arrays[b] === XO && arrays[c] === XO;
-    //console.log(isWinning + ' - ' + getCurrentPlayer());
     if (isWinning) {
       completed = true;
       const boxes = getBoxes();
       boxes[a].classList.add('win');
       boxes[b].classList.add('win');
       boxes[c].classList.add('win');
-      //console.log(`Winning combination matched. The winning combination is ${combination}`);
       return true;
     }
   }
@@ -67,12 +61,12 @@ function checkTie() {
 
 function displayInfo() {
   if (checkWin()) {
-    info.innerText = `Player ${getCurrentPlayer()} wins`;
+    info.innerText = `Game over! Player ${getCurrentPlayer()} wins`;
     return;
   } 
 
   if (checkTie()) {
-    info.innerText = `Game tied`;
+    info.innerText = `Game over! Game tied`;
     return;
   }
 
@@ -91,7 +85,7 @@ function getCurrentPlayer() {
   return playerX ? 'X' : 'O';
 }
 
-function boxesListerners() {
+function initiateBoardListeners() {
   const boxes = getBoxes();
   boxes.forEach(element => {
     listen('click', element, () => {
