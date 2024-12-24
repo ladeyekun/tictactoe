@@ -7,7 +7,9 @@ const resetBtn = select('.reset');
 const arrays = Array(9).fill(0);
 const board = select('.board');
 const info = select('.info p');
-let playerX = false;
+
+let isWinning = false
+let playerX = true; //Player X to play when true
 let completed = false;
 const winCombinations = [
   [0, 1, 2],
@@ -20,8 +22,13 @@ const winCombinations = [
   [2, 4, 6]
 ];
 
+const isTie = () => {
+  return arrays.every((value) => value === 'X' || value === 'O');
+}
+
 function init() {
   board.innerHTML = '';
+  arrays.fill(0);
   for (let index of arrays.keys()){
     const boxArr = create('div');
     boxArr.classList.add('box');
@@ -34,48 +41,42 @@ function init() {
 
     board.appendChild(boxArr);
   }
+  info.innerText = `Game Started, Player ${getCurrentPlayer()} to play`;
   initiateBoardListeners();
-  displayInfo();
 }
 
 function checkWin() {
   for (const combination of winCombinations){
-    let XO = getCurrentPlayer();
     let [a, b, c] = combination;
-    let isWinning = arrays[a] === XO && arrays[b] === XO && arrays[c] === XO;
+    let XO = getCurrentPlayer();
+    isWinning = combination.every((value) => arrays[value] === XO);
+
     if (isWinning) {
       completed = true;
       const boxes = getBoxes();
       boxes[a].classList.add('win');
       boxes[b].classList.add('win');
       boxes[c].classList.add('win');
-      return true;
+      info.innerText = `Game over! Player ${getCurrentPlayer()} wins`;
+      break;
     }
   }
-  return false;
 }
 
+/*
 function checkTie() {
   return arrays.every((value) => value === 'X' || value === 'O');
 }
+  */
 
 function displayInfo() {
-  if (checkWin()) {
-    info.innerText = `Game over! Player ${getCurrentPlayer()} wins`;
-    return;
-  } 
-
-  if (checkTie()) {
-    info.innerText = `Game over! Game tied`;
-    return;
-  }
-
   playerX = !playerX;
   info.innerText = `Player ${getCurrentPlayer()} to play`;
 }
 
 function reset() {
-  playerX = false;
+  playerX = true;
+  isWinning = false;
   completed = false;
   arrays.fill(0);
   init();
@@ -94,8 +95,22 @@ function initiateBoardListeners() {
         if (arrays[key] === 0) {
           element.innerText = getCurrentPlayer();
           arrays[key] = getCurrentPlayer();
+          checkWin();
+          if (isWinning) {
+            info.innerText = `Game over! Player ${getCurrentPlayer()} wins`;
+            return;
+          }
+          if (isTie()) {
+            info.innerText = `Game tied! Click board to continue`;
+            return;
+          }          
           displayInfo();
-        }  
+        }
+        if (isTie()) {
+          init();
+          displayInfo();
+          return;
+        }
       }
     });
   });
